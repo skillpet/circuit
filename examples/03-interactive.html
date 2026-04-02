@@ -34,7 +34,7 @@
     const ctrl = Circuit.mountFromJson(document.getElementById("output"), {
       elements: [
         { type: "SourceV", d: "up", label: "12V", id: "V1", tooltip: "DC Voltage Source, 12V" },
-        { type: "ResistorIEEE", label: "R1  10kΩ", id: "R1", tooltip: "Resistor, 10kΩ ± 5%" },
+        { type: "ResistorIEEE", d: "right", label: "R1  10kΩ", id: "R1", tooltip: "Resistor, 10kΩ ± 5%" },
         { type: "Capacitor", d: "down", label: "C1  100nF", id: "C1", tooltip: "Ceramic Capacitor, 100nF" },
         { type: "Line", d: "left", id: "W1" },
         { type: "Ground", id: "GND" },

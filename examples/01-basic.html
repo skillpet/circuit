@@ -20,7 +20,7 @@
     document.getElementById("output").innerHTML = Circuit.renderFromJson({
       elements: [
         { type: "SourceV", d: "up", label: "12V" },
-        { type: "ResistorIEEE", label: "R1  10kΩ" },
+        { type: "ResistorIEEE", d: "right", label: "R1  10kΩ" },
         { type: "Capacitor", d: "down", label: "C1  100nF" },
         { type: "Line", d: "left" },
         { type: "Ground" },

@@ -193,7 +193,7 @@
     document.getElementById("rc-circuit").innerHTML = Circuit.renderFromJson({
       elements: [
         { type: "SourceV", d: "up", label: "12V" },
-        { type: "ResistorIEEE", label: "R1  10kΩ" },
+        { type: "ResistorIEEE", d: "right", label: "R1  10kΩ" },
         { type: "Capacitor", d: "down", label: "C1  100nF" },
         { type: "Line", d: "left" },
         { type: "Ground" },
@@ -216,7 +216,7 @@
     document.getElementById("voltage-divider").innerHTML = Circuit.renderFromJson({
       elements: [
         { type: "SourceV", d: "up", label: "Vin" },
-        { type: "ResistorIEEE", label: "R1" },
+        { type: "ResistorIEEE", d: "right", label: "R1" },
         { type: "Dot" },
         { type: "ResistorIEEE", d: "down", label: "R2" },
         { type: "Ground" },
@@ -236,7 +236,7 @@
     var themeCircuit = {
       elements: [
         { type: "SourceV", d: "up", label: "Vs" },
-        { type: "ResistorIEEE", label: "R1" },
+        { type: "ResistorIEEE", d: "right", label: "R1" },
         { type: "Capacitor", d: "down", label: "C1" },
         { type: "Line", d: "left" },
         { type: "Ground" },
@@ -272,7 +272,7 @@
     var ctrl = Circuit.mountFromJson(document.getElementById("interactive-output"), {
       elements: [
         { type: "SourceV", d: "up", label: "12V", id: "V1", tooltip: "DC Voltage Source, 12V" },
-        { type: "ResistorIEEE", label: "R1  10kΩ", id: "R1", tooltip: "Resistor, 10kΩ ± 5%" },
+        { type: "ResistorIEEE", d: "right", label: "R1  10kΩ", id: "R1", tooltip: "Resistor, 10kΩ ± 5%" },
         { type: "Capacitor", d: "down", label: "C1  100nF", id: "C1", tooltip: "Ceramic Capacitor, 100nF" },
         { type: "Line", d: "left", id: "W1" },
         { type: "Ground", id: "GND" },
@@ -287,7 +287,7 @@
       drawing: { colorTransition: true },
       elements: [
         { type: "SourceV", d: "up", label: "Vs", color: "#2ecc71" },
-        { type: "ResistorIEEE", label: "R1", color: "#e74c3c" },
+        { type: "ResistorIEEE", d: "right", label: "R1", color: "#e74c3c" },
         { type: "Capacitor", d: "down", label: "C1", color: "#3498db" },
         { type: "Line", d: "left", color: "#f39c12" },
         { type: "Ground", color: "#9b59b6" },
