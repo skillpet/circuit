@@ -16,6 +16,14 @@
 
 **Website & Demos:** [circuit.skill.pet](https://circuit.skill.pet)
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="RLC Circuit" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/opamp.svg" alt="Op-Amp" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/logic-gates.svg" alt="Logic Gates" height="120">
+</p>
+
 ## Funktionen
 
 - Über 200 integrierte elektrische Bauteile (Widerstände, Kondensatoren, Dioden, Transistoren, ICs, Logikgatter usw.)
@@ -157,6 +165,12 @@ Alle Beispiele laden die Bibliothek vom [unpkg](https://unpkg.com/@skillpet/circ
 
 Drei integrierte Themes: `light` (Standard), `dark` und `print`.
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="Light Theme" height="100">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/dark-theme.svg" alt="Dark Theme" height="100">
+</p>
+
 ```ts
 const svg = renderFromJson(circuit, { theme: "dark" });
 ```
@@ -164,6 +178,10 @@ const svg = renderFromJson(circuit, { theme: "dark" });
 ## Farbübergänge
 
 Fließende Gradientenübergänge zwischen unterschiedlich gefärbten Bauteilen:
+
+<p align="center">
+  <img src="./images/color-transitions.svg" alt="Color Transitions" height="120">
+</p>
 
 ```ts
 const svg = renderFromJson({

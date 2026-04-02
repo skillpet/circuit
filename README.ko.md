@@ -16,6 +16,14 @@
 
 **웹사이트 & 데모:** [circuit.skill.pet](https://circuit.skill.pet)
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="RLC Circuit" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/opamp.svg" alt="Op-Amp" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/logic-gates.svg" alt="Logic Gates" height="120">
+</p>
+
 ## 기능
 
 - 200개 이상의 내장 전기 부품 (저항, 커패시터, 다이오드, 트랜지스터, IC, 논리 게이트 등)
@@ -157,6 +165,12 @@ ctrl.on("element:click", (info) => console.log("클릭:", info.id));
 
 3가지 내장 테마: `light` (기본값), `dark`, `print`.
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="Light Theme" height="100">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/dark-theme.svg" alt="Dark Theme" height="100">
+</p>
+
 ```ts
 const svg = renderFromJson(circuit, { theme: "dark" });
 ```
@@ -164,6 +178,10 @@ const svg = renderFromJson(circuit, { theme: "dark" });
 ## 색상 전환
 
 다른 색상의 부품 간 부드러운 그라데이션 전환:
+
+<p align="center">
+  <img src="./images/color-transitions.svg" alt="Color Transitions" height="120">
+</p>
 
 ```ts
 const svg = renderFromJson({

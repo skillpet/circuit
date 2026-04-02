@@ -16,6 +16,14 @@
 
 **Site web & Démos :** [circuit.skill.pet](https://circuit.skill.pet)
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="RLC Circuit" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/opamp.svg" alt="Op-Amp" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/logic-gates.svg" alt="Logic Gates" height="120">
+</p>
+
 ## Fonctionnalités
 
 - Plus de 200 composants électriques intégrés (résistances, condensateurs, diodes, transistors, CI, portes logiques, etc.)
@@ -157,6 +165,12 @@ Tous les exemples chargent la bibliothèque depuis le CDN [unpkg](https://unpkg.
 
 Trois thèmes intégrés : `light` (par défaut), `dark` et `print`.
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="Light Theme" height="100">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/dark-theme.svg" alt="Dark Theme" height="100">
+</p>
+
 ```ts
 const svg = renderFromJson(circuit, { theme: "dark" });
 ```
@@ -164,6 +178,10 @@ const svg = renderFromJson(circuit, { theme: "dark" });
 ## Transitions de Couleur
 
 Transitions en dégradé fluide entre composants de couleurs différentes :
+
+<p align="center">
+  <img src="./images/color-transitions.svg" alt="Color Transitions" height="120">
+</p>
 
 ```ts
 const svg = renderFromJson({

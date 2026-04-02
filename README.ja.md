@@ -16,6 +16,14 @@
 
 **公式サイト & デモ：** [circuit.skill.pet](https://circuit.skill.pet)
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="RLC Circuit" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/opamp.svg" alt="Op-Amp" height="120">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/logic-gates.svg" alt="Logic Gates" height="120">
+</p>
+
 ## 特徴
 
 - 200以上の内蔵電気部品（抵抗、コンデンサ、ダイオード、トランジスタ、IC、ロジックゲートなど）
@@ -157,6 +165,12 @@ ctrl.on("element:click", (info) => console.log("クリック:", info.id));
 
 3つの内蔵テーマ：`light`（デフォルト）、`dark`、`print`。
 
+<p align="center">
+  <img src="./images/rlc-circuit.svg" alt="Light Theme" height="100">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/dark-theme.svg" alt="Dark Theme" height="100">
+</p>
+
 ```ts
 const svg = renderFromJson(circuit, { theme: "dark" });
 ```
@@ -164,6 +178,10 @@ const svg = renderFromJson(circuit, { theme: "dark" });
 ## 色遷移
 
 異なる色のコンポーネント間でスムーズなグラデーション遷移：
+
+<p align="center">
+  <img src="./images/color-transitions.svg" alt="Color Transitions" height="120">
+</p>
 
 ```ts
 const svg = renderFromJson({
