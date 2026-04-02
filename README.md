@@ -1,72 +1,143 @@
 # @skillpet/circuit
 
-[English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Deutsch](./README.de.md)
-
 <p align="center">
   <strong>Circuit diagram library — render electrical schematics from JSON, with interactive SVG, themes, and Vue / React components.</strong>
 </p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/@skillpet/circuit"><img src="https://img.shields.io/npm/v/@skillpet/circuit.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@skillpet/circuit"><img src="https://img.shields.io/npm/l/@skillpet/circuit.svg" alt="license"></a>
   <a href="https://circuit.skill.pet"><img src="https://img.shields.io/badge/docs-circuit.skill.pet-blue" alt="docs"></a>
 </p>
 
 ---
 
-**Website & Docs:** [circuit.skill.pet](https://circuit.skill.pet)
+**Website & Demos:** [circuit.skill.pet](https://circuit.skill.pet)
 
 ## Features
 
-- Render circuit diagrams from a simple JSON description
 - 200+ built-in electrical components (resistors, capacitors, diodes, transistors, ICs, logic gates, etc.)
+- Vue 3 & React components out of the box
 - Interactive SVG: hover highlights, tooltips, click events
 - 3 built-in themes (light, dark, print) + custom themes
 - Smooth color transitions between elements
-- Vue 3 & React components
-- Browser bundle via CDN
+- Render circuit diagrams from a simple JSON description
+- Browser bundle (script tag) & ESM / CJS support
 - KaTeX math label rendering
 - Flow charts, DSP blocks, pictorial breadboard components
+- Zero runtime dependencies (except optional KaTeX)
+
+## Installation
+
+```bash
+npm install @skillpet/circuit
+```
 
 ## Quick Start
 
-Add one script tag and start drawing:
+### React
 
-```html
-<script src="https://unpkg.com/@skillpet/circuit/dist/circuit.bundle.min.js"></script>
-<script>
-  const svg = Circuit.renderFromJson({
+```tsx
+import { CircuitDiagram } from "@skillpet/circuit/react";
+
+function App() {
+  const circuit = {
     elements: [
       { type: "SourceV", d: "up", label: "12V" },
-      { type: "ResistorIEEE", label: "R1 10kΩ" },
+      { type: "ResistorIEEE", d: "right", label: "R1 10kΩ", id: "R1", tooltip: "100kΩ Carbon Film" },
+      { type: "Capacitor", d: "down", label: "C1 100nF", id: "C1", tooltip: "Ceramic 100nF" },
+      { type: "Line", d: "left" },
+      { type: "Ground" },
+    ],
+  };
+
+  return (
+    <CircuitDiagram
+      circuit={circuit}
+      interactive
+      theme="light"
+      onElementClick={(info) => console.log("Clicked:", info.id)}
+      onElementHover={(info) => console.log("Hover:", info.tooltip)}
+    />
+  );
+}
+```
+
+### Vue 3
+
+```vue
+<script setup>
+import { CircuitDiagram } from "@skillpet/circuit/vue";
+
+const circuit = {
+  elements: [
+    { type: "SourceV", d: "up", label: "12V" },
+    { type: "ResistorIEEE", d: "right", label: "R1 10kΩ", id: "R1", tooltip: "100kΩ Carbon Film" },
+    { type: "Capacitor", d: "down", label: "C1 100nF", id: "C1", tooltip: "Ceramic 100nF" },
+    { type: "Line", d: "left" },
+    { type: "Ground" },
+  ],
+};
+
+const onElementClick = (info) => console.log("Clicked:", info.id);
+</script>
+
+<template>
+  <CircuitDiagram
+    :circuit="circuit"
+    interactive
+    theme="light"
+    @element-click="onElementClick"
+  />
+</template>
+```
+
+### ESM / TypeScript
+
+```ts
+import { renderFromJson, mountFromJson } from "@skillpet/circuit";
+
+// Static rendering — returns an SVG string
+const svg = renderFromJson({
+  elements: [
+    { type: "SourceV", d: "up", label: "12V" },
+    { type: "ResistorIEEE", d: "right", label: "R1 10kΩ" },
+    { type: "Capacitor", d: "down", label: "C1 100nF" },
+    { type: "Line", d: "left" },
+    { type: "Ground" },
+  ],
+});
+
+// Interactive mode — mount into DOM with hover, tooltips, click events
+const ctrl = mountFromJson(document.getElementById("container")!, {
+  elements: [
+    { type: "ResistorIEEE", id: "R1", tooltip: "100kΩ Carbon Film" },
+    { type: "Capacitor", d: "down", id: "C1", tooltip: "0.1μF Ceramic" },
+  ],
+}, { interactive: true });
+
+ctrl.on("element:click", (info) => console.log("Clicked:", info.id));
+```
+
+### Browser (CDN)
+
+```html
+<div id="output"></div>
+<script src="https://unpkg.com/@skillpet/circuit/dist/circuit.bundle.min.js"></script>
+<script>
+  document.getElementById("output").innerHTML = Circuit.renderFromJson({
+    elements: [
+      { type: "SourceV", d: "up", label: "12V" },
+      { type: "ResistorIEEE", d: "right", label: "R1 10kΩ" },
       { type: "Capacitor", d: "down", label: "C1 100nF" },
       { type: "Line", d: "left" },
       { type: "Ground" },
     ],
   });
-  document.getElementById("output").innerHTML = svg;
 </script>
 ```
 
-### Interactive Mode
-
-Mount into the DOM with hover highlights, tooltips, and click events:
-
-```html
-<div id="container"></div>
-<script src="https://unpkg.com/@skillpet/circuit/dist/circuit.bundle.min.js"></script>
-<script>
-  const ctrl = Circuit.mountFromJson(document.getElementById("container"), {
-    elements: [
-      { type: "ResistorIEEE", id: "R1", tooltip: "100kΩ Carbon Film" },
-      { type: "Capacitor", d: "down", id: "C1", tooltip: "0.1μF Ceramic" },
-    ],
-  }, { interactive: true });
-
-  ctrl.on("element:click", (info) => console.log("Clicked:", info.id));
-  ctrl.on("element:hover", (info) => console.log("Hover:", info.tooltip));
-</script>
-```
-
-## Examples
+## Live Examples
 
 This repo contains runnable HTML examples — just open them in any browser:
 
@@ -84,20 +155,23 @@ All examples load the library from the [unpkg](https://unpkg.com/@skillpet/circu
 
 Three built-in themes: `light` (default), `dark`, and `print`.
 
-```js
-const svg = Circuit.renderFromJson(circuit, { theme: "dark" });
+```ts
+const svg = renderFromJson(circuit, { theme: "dark" });
 ```
 
 ## Color Transitions
 
 Smooth gradient transitions between differently colored elements:
 
-```js
-const svg = Circuit.renderFromJson({
+```ts
+const svg = renderFromJson({
   drawing: { colorTransition: true },
   elements: [
     { type: "SourceV", d: "up", color: "#2ecc71" },
-    { type: "ResistorIEEE", color: "#e74c3c" },
+    { type: "ResistorIEEE", d: "right", color: "#e74c3c" },
+    { type: "Capacitor", d: "down", color: "#3498db" },
+    { type: "Line", d: "left" },
+    { type: "Ground" },
   ],
 }, { colorTransition: true });
 ```
